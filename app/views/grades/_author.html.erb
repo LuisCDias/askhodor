@@ -1,0 +1,21 @@
+<li class="media">
+  <div class="media-left">
+    <a href="#">
+      <img class="media-object" src="<%= author[:photo] %>" alt="author1">
+    </a>
+  </div>
+  <div class="media-body">
+    <h4 class="media-heading">
+      <%= link_to author[:name], choose_writer_path(id:author[:id]), remote: true, onclick: "showSpinner();" %>
+    </h4>
+    <div class="progress">
+      <div class="progress-bar progress-bar-success" style="width: 35%"></div>
+      <div class="progress-bar progress-bar-warning progress-bar-striped" style="width: 40%"></div>
+      <div class="progress-bar progress-bar-danger" style="width: 10%"></div>
+    </div>
+    <p>
+      <%="Hold the door... " * 16 %>
+    </p>
+  </div>
+</li>
+<hr>

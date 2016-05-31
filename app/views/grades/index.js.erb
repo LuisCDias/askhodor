@@ -1,0 +1,8 @@
+$('.js-authors-listing > ul').html("");
+<% @data.each do |data| %>
+  var author = '<%= j render "grades/author", author: data %>';
+  $('.js-authors-listing > ul').append(author);
+<% end %>
+$('.js-authors-listing').show();
+$('.spinner').hide();
+$('.js-dont-apply').click();

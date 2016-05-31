@@ -3,7 +3,17 @@ class GradesController < ApplicationController
   #$automated_readability_index = 4.71* (@characters/@words) + 0.5 * (@words/@sentences) - 21.43
 
   def index
-
+    skill = params[:skill].downcase
+    @writers = Writer.all
+    @data = []
+    @writers.each do |writer|
+      if writer.skills_list.include?(skill)
+        @data << {id: writer.id, name: writer.name, grade: writer.grade, photo: writer.photo}
+      end
+    end
+    respond_to do |format|
+      format.js
+    end
   end
 end
 

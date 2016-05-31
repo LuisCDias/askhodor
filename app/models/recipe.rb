@@ -14,7 +14,7 @@ class Recipe < ActiveRecord::Base
   belongs_to :writer
 
   def stripped_content
-    strip_tags(content)
+    ActionController::Base.helpers.strip_tags(content)
   end
 
   def words_count

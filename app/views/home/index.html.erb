@@ -1,190 +1,49 @@
+<div class="spinner"><i class="fa fa-circle-o-notch fa-spin fa-2x" aria-hidden="true"></i></div>
 <nav class="navbar navbar-default navbar-fixed-top">
   <div class="container">
-    <h1><a href="#" style="padding-left: 4px; color: #70CCCC;">AskHodor</a></h1>
+    <h1><a href="/" style="padding-left: 4px; color: #70CCCC;">AskHodor</a></h1>
     <ol class="breadcrumb" style="padding-left: 15px;">
-      <li><a href="#">Trendy</a></li>
-      <li><a href="#">Popular</a></li>
-      <li><a href="#">Most Wanted</a></li>
+      <li><a href="#" class="js-trendy" role="tab" data-toggle="tab">Trendy</a></li>
+      <li><a href="#" class="js-popular" role="tab" data-toggle="tab">Popular</a></li>
+      <li><a href="#" class="js-most-wanted" role="tab" data-toggle="tab">Most Wanted</a></li>
     </ol>
   </div>
 </nav>
 
-<!-- --------------------------------------------------------------------------------- -->
-
 <div class="container" style="margin-top: 150px;">
   <div class="row">
     <div class="col-md-3">
-      <ul class="list-group">
-       <li class="list-group-item">
-        <span class="badge">14</span>
-          JavaScript
-       </li>
-       <li class="list-group-item">
-        <span class="badge">8</span>
-          Node.js
-       </li>
-       <li class="list-group-item">
-        <span class="badge">2</span>
-          Ruby
-       </li>
-       <li class="list-group-item">
-        <span class="badge">89</span>
-          Python
-       </li>
-       <li class="list-group-item">
-        <span class="badge">125</span>
-          Java
-       </li>
-       <li class="list-group-item">
-        <span class="badge">34%</span>
-          C#
-       </li>
-       <li class="list-group-item">
-        <span class="badge">6</span>
-          PHP
-       </li>
-       <li class="list-group-item">
-        <span class="badge">14</span>
-          JavaScript
-       </li>
-       <li class="list-group-item">
-        <span class="badge">8</span>
-          Node.js
-       </li>
-       <li class="list-group-item">
-        <span class="badge">2</span>
-          Ruby
-       </li>
-       <li class="list-group-item">
-        <span class="badge">89</span>
-          Python
-       </li>
-       <li class="list-group-item">
-        <span class="badge">125</span>
-          Java
-       </li>
-       <li class="list-group-item">
-        <span class="badge">43</span>
-          C#
-       </li>
-       <li class="list-group-item">
-        <span class="badge">6</span>
-          PHP
-       </li>
+      <ul class="list-group js-list js-trendy-list">
+        <% @trendy.each do |trendy| %>
+          <li class="list-group-item">
+            <span class="badge"><%= trendy.percentage %>%</span>
+            <%= link_to trendy.name, grades_path(skill: trendy.name), remote: true, onclick: "showSpinner();"%></a>
+          </li>
+        <% end %>
+      </ul>
+     <ul class="list-group js-list js-popular-list" hidden>
+       <% @popular.each do |popular| %>
+          <li class="list-group-item">
+            <span class="badge"><%= popular.percentage %>%</span>
+            <%= link_to popular.name, grades_path(skill: popular.name), remote: true, onclick: "showSpinner();"%></a>
+          </li>
+        <% end %>
+     </ul>
+     <ul class="list-group js-list js-most-wanted-list" hidden>
+        <% @most_wanted.each do |most_wanted| %>
+          <li class="list-group-item">
+            <span class="badge"><%= most_wanted.percentage %>%</span>
+            <%= link_to most_wanted.name, grades_path(skill: most_wanted.name), remote: true, onclick: "showSpinner();"%></a>
+          </li>
+        <% end %>
      </ul>
     </div>
-    <div class="col-md-6">
+
+    <div class="col-md-6 js-authors-listing" hidden>
       <ul class="media-list">
         <hr style="margin-top: 0px;">
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author1.jpg" alt="author1">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Author1</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, ducimus nesciunt sit cupiditate, rerum reprehenderit culpa ut. Omnis nesciunt animi, quis nobis repudiandae tempora a nostrum cumque reiciendis. Obcaecati.
-          </div>
-        </li>
-        <hr>
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author2.jpg" alt="author2">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Author2</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odit iure corporis, nisi, eaque sapiente consequuntur nihil, dignissimos ipsam in itaque facere dicta distinctio, at deserunt. Perferendis, obcaecati sint quas.
-          </div>
-        </li>
-        <hr>
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author0.jpg" alt="author0">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Miguel Silva</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Modi molestias, ducimus nesciunt sit cupiditate, rerum reprehenderit culpa ut. Omnis nesciunt animi, quis nobis repudiandae tempora a nostrum cumque reiciendis. Obcaecati.
-          </div>
-        </li>
-        <hr>
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author3.jpg" alt="author3">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Author3</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odit iure corporis, nisi, eaque sapiente consequuntur nihil, dignissimos ipsam in itaque facere dicta distinctio, at deserunt. Perferendis, obcaecati sint quas.
-          </div>
-        </li>
-        <hr>
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author4.jpg" alt="author4">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Author4</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odit iure corporis, nisi, eaque sapiente consequuntur nihil, dignissimos ipsam in itaque facere dicta distinctio, at deserunt. Perferendis, obcaecati sint quas.
-          </div>
-        </li>
-        <hr>
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author5.jpg" alt="author5">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Author5</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odit iure corporis, nisi, eaque sapiente consequuntur nihil, dignissimos ipsam in itaque facere dicta distinctio, at deserunt. Perferendis, obcaecati sint quas.
-          </div>
-        </li>
-        <hr>
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author6.jpg" alt="author6">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Author6</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odit iure corporis, nisi, eaque sapiente consequuntur nihil, dignissimos ipsam in itaque facere dicta distinctio, at deserunt. Perferendis, obcaecati sint quas.
-          </div>
-        </li>
-        <hr>
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author7.jpg" alt="author7">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Author7</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odit iure corporis, nisi, eaque sapiente consequuntur nihil, dignissimos ipsam in itaque facere dicta distinctio, at deserunt. Perferendis, obcaecati sint quas.
-          </div>
-        </li>
-        <hr>
-        <li class="media">
-          <div class="media-left">
-            <a href="#">
-              <img class="media-object" src="assets/author8.jpg" alt="author8">
-            </a>
-          </div>
-          <div class="media-body">
-            <h4 class="media-heading">Author8</h4>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quos odit iure corporis, nisi, eaque sapiente consequuntur nihil, dignissimos ipsam in itaque facere dicta distinctio, at deserunt. Perferendis, obcaecati sint quas.
-          </div>
-        </li>
-        <hr>
       </ul>
+
       <nav style="margin-left: 25%;">
         <ul class="pagination">
           <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
@@ -196,14 +55,16 @@
           <li><a href="#">6 <span class="sr-only">(current)</span></a></li>
           <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&raquo;</span></a></li>
         </ul>
-    </nav>
+      </nav>
     </div>
-    <div class="col-md-3">
+    <div class="col-md-3 js-apply" hidden>
+      <div class="ribbon-wrapper-green"><div class="ribbon-green"><span class="js-grade-label"> </span><i class="fa fa-graduation-cap" aria-hidden="true"></i>
+</div></div>
       <div class="jumbotron">
-        <h1 class="text-center">Messy code <br>===<br> incompetence</h1>
-        <p class="text-center" style="padding-top: 33px;">It’s not a bug – it’s an undocumented feature.</p>
-        <p style="padding-top: 33px; margin-left: 24%; margin-bottom: 3%;"><a class="btn btn-primary btn-lg" href="#" role="button">Apply Here</a></p>
-        <p style="margin-left: 20%;"><a class="btn btn-danger btn-lg" href="#" role="button">Or Just Don't</a></p>
+        <img class="media-object img-rounded js-apply-image" src="assets/author0.jpg" alt="author1" style="margin:0 auto;">
+        <p class="text-center js-apply-tags" style="padding-top: 33px;"></p>
+        <p style="padding-top: 33px; margin-left: 24%; margin-bottom: 3%;"><a class="btn btn-pr ry btn-lg js-apply-btn" href="#" role="button">Apply Here</a></p>
+        <p style="margin-left: 20%;"><a class="btn btn-danger btn-lg js-dont-apply" href="#" role="button">Or Just Don't</a></p>
       </div>
     </div>
   </div>
@@ -237,10 +98,10 @@
       </div>
       <div class="footer-right">
         <p>Don't Fuck With Us:</p>
-        <form action="#" method="post">
+        <form action="#">
           <input type="text" name="email" placeholder="Email" />
           <textarea name="message" placeholder="Message"></textarea>
-          <button>Send</button>
+          <button class="you-wish">Send</button>
         </form>
       </div>
   </footer>

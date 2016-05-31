@@ -1,0 +1,5 @@
+$('.js-apply-image').attr('src','<%= @writer.photo %>');
+$('.js-apply-tags').html('<%= @skills %>');
+$('.js-grade-label').html('<%= @writer.grande_label %> ')
+$('.js-apply').removeAttr('hidden');
+$('.spinner').hide();
