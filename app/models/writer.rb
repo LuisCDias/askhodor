@@ -31,8 +31,9 @@ class Writer < ActiveRecord::Base
     "14": "College"
   }
 
-  def calculate_grade_points
-    4.71*(average_characters_count_per_recipe/average_words_count_per_recipe) + 0.5*(average_words_count_per_recipe/average_sentences_count_per_recipe) - 21.43
+  def grade
+    result = 4.71*(average_characters_count_per_recipe/average_words_count_per_recipe) + 0.5*(average_words_count_per_recipe/average_sentences_count_per_recipe) - 21.43
+    result <= 11 ? (result + 3).to_i : result.to_i
   end
 
   def average_characters_count_per_recipe
